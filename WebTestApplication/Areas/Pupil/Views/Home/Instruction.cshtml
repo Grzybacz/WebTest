@@ -1,0 +1,39 @@
+﻿@using WebTest.Models
+@model PupilSession
+
+<div class ="cointainer">
+    <br /><br />
+    <div class ="row">
+        <div class = "col-md-6">
+            <h2>@TempData["TestName"]</h2>
+            <h4> @TempData["TestDescription"] </h4>           
+        </div>
+        <div class = "col-md-6">
+            Test duration: 45 minutes <br />
+            Total question : @TempData["CountQuestions"]
+           
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-12">
+            Before you begin, please read the following instruction carefully.
+        </div>
+    </div>
+</div>
+<br />
+<h5>How to use this application?</h5>
+<ul>
+    <li>Your answers are not tracked unless you click on the <span class="highlight"><b>Save && Next</b></span> button.</li>
+</ul>
+<br />
+<div class="col-1 text-end">
+            <a asp-controller="Home" asp-action="Exam" class="btn btn-primary">
+                </i>Start</a>
+        </div>
+
+       
+@if(Model != null)
+{
+    @Html.HiddenFor(x=>Model.TestId)
+}

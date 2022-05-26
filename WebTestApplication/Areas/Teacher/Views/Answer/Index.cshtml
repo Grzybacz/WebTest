@@ -1,0 +1,38 @@
+﻿@using WebTest.Models
+@model AnswersModel
+
+<form method="post" enctype="multipart/form-data" asp-controller="Answer" asp-action="OnCategoryIdChanged">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+               Answer
+                <hr />
+            </h2>
+        </div>
+
+        <div class="mb-3">
+            @*<label asp-for="Category"></label>*@
+            <select asp-for="SelectedCategoryId" asp-items="@Model.Categories" class="form-select">
+                <option>--Select Category--</option>
+            </select>
+            @*<span asp-validation-for="CategoryId" class="text-denger"></span>*@
+        </div>    
+        
+        <input type="submit" value="Submit"/>
+    </div>
+</form>
+ 
+
+
+@section Scripts{
+@{
+<partial name="_ValidationScriptsPartial" />
+}
+}
+<script type="text/javascript">
+			function testlist() {
+				var select = document.getElementById('test');			
+			}
+
+			
+		</script>

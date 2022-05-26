@@ -1,0 +1,57 @@
+﻿@model WebTest.Models.TestCart  
+    
+
+<form method="post" asp-action="Delete">
+    <input hidden asp-for="TestId"/>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Delete Question
+                <hr />
+            </h2>
+        </div> 
+        
+        
+        <div id="wrapper">
+        <div class="mb-3" id="field_div">
+            <label asp-for="Content"></label>           
+            <textarea asp-for="Content" class="form-control" id="input_text"></textarea>
+            <span asp-validation-for="Content" class="text-denger"></span>
+        </div>
+        </div>
+         
+            
+       
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>   
+       
+
+         
+        <a asp-controller="Questions" asp-action="Index" asp-route-id="@Model.TestId" class="btn btn-secondary" style="width:150px">
+            Black to List
+        </a>
+    </div>
+</form>
+
+
+@section Scripts{
+@{
+<partial name="_ValidationScriptsPartial" />
+}
+<script src="<tiny_mce_wiris>/integration/WIRISplugins.js?viewer=image"></script>
+<script>
+   tinymce.init({
+    selector: 'textarea',
+    external_plugins: { tiny_mce_wiris: 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' }, 
+    toolbar: 'tiny_mce_wiris_formulaEditor  | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent' 
+    
+    });
+</script>
+   
+   
+  
+
+
+
+
+
+} 

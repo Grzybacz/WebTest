@@ -1,0 +1,187 @@
+﻿@model IEnumerable<WebTest.Models.TestCart>
+   
+
+
+ @{
+    var countQuestion = @ViewBag.countQuestion;
+    var endTime = DateTime.UtcNow.AddSeconds(65);
+    var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
+   
+}
+ <div class="row">
+    <div class="col md-12">
+        @*<div>Time Remaining: <span id="minRemaining"></span>: <span id= "secRemaining"></span> </div>*@
+         <div> Time Remaining: <span id="timer"></span></div>
+     </div>
+  </div>
+
+            <table>
+                <tr>  
+             
+                
+				<td><a href="@Url.Action("Exam", "Home", new { @qno = @ViewBag.qno -1, @testId = (int)@ViewBag.TestId })" class="btn btn-primary" onclick="Backward(this);"> Previous </a></td>
+                 
+				
+                    @for (int i = 0; i < countQuestion; i++)
+                    {
+                           
+                        <td><a href="@Url.Action("Exam", "Home", new {  @qno = (i + 1), @testId = (int)@ViewBag.TestId })" class="btn @((@ViewBag.qno)== (i + 1) ? "btn-secondary" : "btn-primary")">@(i + 1)</a></td>
+                     }     
+                        
+                    
+                
+				<td><a href="@Url.Action("Exam", "Home", new { @qno = @ViewBag.qno + 1, @testId = (int)@ViewBag.TestId })" class="btn btn-primary"  onclick="Forward(this);"> Next >>|</a></td>
+				
+               
+                
+                </tr>
+        </table>
+    </div>
+</div>
+  
+ 
+
+
+  <div class="border p-3 mt-4">
+        
+        @Html.Raw(@ViewBag.testCartsVM)    
+        
+    </div>
+
+    
+    <form  asp-controller="Home" asp-action="AnswerPost" method="post" >
+       
+    <input hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+                Answer
+                <hr />
+            </h2>
+        </div>    
+        <div id="wrapper">
+        <div class="mb-3" id="field_div">
+            <label ></label>           
+            <textarea  class="form-control"  name="answer"></textarea>
+            <span  class="text-denger"></span>
+        </div>
+        </div>
+         <button type="submit" class="btn btn-primary" style="width:150px">Save</button>        
+    </div>
+</form>
+
+
+
+    @section Scripts
+{
+
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+      
+    <script src="<tiny_mce_wiris>/integration/WIRISplugins.js?viewer=image"></script>
+    <script>
+       tinymce.init({
+        selector: 'textarea',
+        external_plugins: { tiny_mce_wiris: 'https://www.wiris.net/demo/plugins/tiny_mce/plugin.js' }, 
+        toolbar: 'tiny_mce_wiris_formulaEditor  | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent' 
+    
+        });
+    </script>
+}
+//<script>
+//var remSeconds= 120;
+//var secondsCounter = remSeconds % 5;
+//console.log('secondsCounter');
+ 
+
+
+//function formatNumber(number)
+//{
+//    if (number<10) return '0' + number;
+//    else return '' + number;
+//}
+
+//function startTick()
+//{
+    
+
+//    document.getElementById('secRemaining').innerText = formatNumber(parseInt(remSeconds%60))
+//    document.getElementById('minRemaining').innerText =formatNumber(parseInt((remSeconds%3600)/60));  
+    
+//    var _tick = setInterval(function()
+//    {
+//    if(remSeconds >0)
+//        {
+            
+//            remSeconds = remSeconds -1;
+//            secondsCounter = secondsCounter -1;
+//            document.getElementById('secRemaining').innerText = formatNumber(parseInt(remSeconds%60))
+//            document.getElementById('minRemaining').innerText =formatNumber(parseInt((remSeconds%3600)/60));
+            
+//        }
+//    else
+//        {
+//            alert("Your test time has expired");
+//            clearInterval(_tick);
+//            location.href = "https://localhost:7162/Pupil/Home/PupilSession";
+//        }
+           
+//    }, 1000);
+    
+   
+  
+//}
+
+
+
+//startTick();
+//</script>
+
+<script type="text/javascript">
+  
+  var count = 0;
+  var counter = null;
+
+  window.onload = function() {
+    initCounter();
+  };
+
+  function initCounter() {
+    
+    count = getLocalStorage('count') || 2700;
+    counter = setInterval(timer, 1000); 
+  }
+
+  function setLocalStorage(key, val) {
+    if (window.localStorage) {
+      window.localStorage.setItem(key, val);
+    }
+
+    return val;
+  }
+
+  function getLocalStorage(key) {
+    return window.localStorage ? window.localStorage.getItem(key) : '';
+  }
+
+  function timer() {
+    count = setLocalStorage('count', count - 1);
+    if (count == 10) {
+         alert("Your test time has expired");
+    }
+    if (count == -1) {
+      clearInterval(counter);
+      location.href = "https://localhost:7162/Pupil/Home/PupilSession";
+      return;
+    }
+
+    var seconds = count % 60;
+    var minutes = Math.floor(count / 60);
+    
+    minutes %= 60;
+   
+
+    document.getElementById("timer").innerHTML =  minutes +  " minutes and "   + seconds + " seconds";
+  }
+ </script>

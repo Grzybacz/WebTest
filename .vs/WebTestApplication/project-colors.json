@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3b972c19-b443-472d-a7ba-c29c5160086b": {
+      "ProjectGuid": "3b972c19-b443-472d-a7ba-c29c5160086b",
+      "DisplayName": "WebTestApplication",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Różne pliki",
+      "ColorIndex": -1
+    },
+    "0a396da8-bf5d-41a6-9052-24daa5376680": {
+      "ProjectGuid": "0a396da8-bf5d-41a6-9052-24daa5376680",
+      "DisplayName": "WebTest.DataAccess",
+      "ColorIndex": 1
+    },
+    "3f185d8f-52fa-4bdb-a7b4-e62b0c692052": {
+      "ProjectGuid": "3f185d8f-52fa-4bdb-a7b4-e62b0c692052",
+      "DisplayName": "WebTest.Models",
+      "ColorIndex": 2
+    },
+    "11de3c50-f9a0-417c-857d-0b629a4f5f05": {
+      "ProjectGuid": "11de3c50-f9a0-417c-857d-0b629a4f5f05",
+      "DisplayName": "WebTest.Utility",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

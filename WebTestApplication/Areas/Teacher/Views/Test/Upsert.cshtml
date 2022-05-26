@@ -1,0 +1,41 @@
+﻿@using WebTest.Models
+@model Test
+
+<form method="post" asp-action="Upsert">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">
+               Test
+                <hr />
+            </h2>
+        </div>
+       
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-denger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" rows ="3" class="form-control"/>
+            <span asp-validation-for="Description" class="text-denger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Category"></label>
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select">
+            <option disabled selected>--Select Category--</option>
+           </select>
+            <span asp-validation-for="CategoryId" class="text-denger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Test" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Black to List
+        </a>
+    </div>
+</form>
+
+@section Scripts{
+@{
+<partial name="_ValidationScriptsPartial" />
+}
+}

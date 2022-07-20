@@ -14,7 +14,21 @@ namespace WebTest.Models
         public int? TestId { get; set; }
         public Test Test { get; set; }
 
+        //public TestCart(int? id, string content)
+        //{
+        //    if (id == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(id));
+        //    }
 
+        //    if (string.IsNullOrWhiteSpace(content))
+        //    {
+        //        throw new ArgumentNullException(nameof(content));
+        //    }
+
+        //    Id = id.Value;
+        //    Content = content;
+        //}
 
 
 

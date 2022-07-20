@@ -41,29 +41,26 @@ public class TestCartController : Controller
     {
         try
         {
-            TestCart testcart = new()
+            TestCart testcart = new()//id, content
             {
                 TestId = id,
-                Content = content,
-                
-
-
+                Content = content
             };
-            
-            
+
+
             _unitOfWork.TestCart.Add(testcart);
-           
+
             _unitOfWork.Save();
             TempData["success"] = "Test created successfully";
 
-            
+
         }
         catch (Exception ex)
         {
 
         }
-        
-        
+
+
         return View();
 
 

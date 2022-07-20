@@ -9,22 +9,25 @@
             <h4> @TempData["TestDescription"] </h4>           
         </div>
         <div class = "col-md-6">
-            Test duration: 45 minutes <br />
-            Total question : @TempData["CountQuestions"]
+            Czas trwania testu: 45 minutes <br />
+            Liczba zadań : @TempData["CountQuestions"]
            
         </div>
     </div>
     <br /><br />
     <div class="row">
         <div class="col-md-12">
-            Before you begin, please read the following instruction carefully.
+            @*Before you begin, please read the following instruction carefully.*@
+            Przed przystąpieniem do pracy należy uważnie przeczytać poniższą instrukcję.
         </div>
     </div>
 </div>
 <br />
-<h5>How to use this application?</h5>
+<h5>@*How to use this application?*@
+    Jak korzystać z tej aplikacji?
+</h5>
 <ul>
-    <li>Your answers are not tracked unless you click on the <span class="highlight"><b>Save && Next</b></span> button.</li>
+    <li>@*Your answers are not tracked unless you click on the*@ Twoje odpowiedzi zostały zapisane kliknij <span class="highlight"><b>Save & Next</b></span> @*button*@.</li>
 </ul>
 <br />
 <div class="col-1 text-end">

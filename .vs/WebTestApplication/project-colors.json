@@ -25,7 +25,12 @@
       "ProjectGuid": "11de3c50-f9a0-417c-857d-0b629a4f5f05",
       "DisplayName": "WebTest.Utility",
       "ColorIndex": 3
+    },
+    "6fe13bba-3a6a-43a0-900c-47fdf58afe75": {
+      "ProjectGuid": "6fe13bba-3a6a-43a0-900c-47fdf58afe75",
+      "DisplayName": "TestWebApi",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

@@ -16,8 +16,6 @@ namespace WebTestApplication.Repository
             _db = db;
         }
 
-
-
         public void Update(TestCart obj)
         {
             _db.TestCarts.Update(obj);

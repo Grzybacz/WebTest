@@ -120,7 +120,22 @@ public class CategoryController : Controller
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
+        //delete questions from test in this category
+        var questions = _unitOfWork.TestCart.GetAll(c => c.Test.CategoryId == id);
+        foreach (var question in questions)
+        {
+            _unitOfWork.TestCart.Remove(question);
+        }
+
+        // delete test in this category
+        var tests_cat = _unitOfWork.Test.GetAll(c => c.CategoryId == id);        
+        foreach (var test in tests_cat)
+        {
+            _unitOfWork.Test.Remove(test);
+        }
+
+        // delete category
+        var obj = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == id);
             if (obj == null)
             {
                 return NotFound();

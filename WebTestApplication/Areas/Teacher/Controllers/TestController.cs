@@ -90,8 +90,9 @@ public class TestController : Controller
             }
            // var categoryFromDb = _db.Categories.Find(id);
             var testFromDbFirst = _unitOfWork.Test.GetFirstOrDefault(c => c.Id == id);
-            //var categoryFromSingle = _db.Categories.SingleOrDefault((c => c.Id == id);
-            if (testFromDbFirst == null)
+        //var categoryFromSingle = _db.Categories.SingleOrDefault((c => c.Id == id);
+        var testcarts = _unitOfWork.TestCart.GetAll().Where(c => c.TestId == id);
+        if (testFromDbFirst == null)
             {
                 return NotFound();
             }
@@ -103,13 +104,20 @@ public class TestController : Controller
         [ValidateAntiForgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _unitOfWork.Test.GetFirstOrDefault(c => c.Id == id);
-            if (obj == null)
+
+        var questions_test = _unitOfWork.TestCart.GetAll(c => c.TestId == id);
+        foreach (var question in questions_test)
+        {
+            _unitOfWork.TestCart.Remove(question);
+        }
+
+        var obj = _unitOfWork.Test.GetFirstOrDefault(c => c.Id == id);           
+        if (obj == null)
             {
                 return NotFound();
-            }
+            }     
 
-            _unitOfWork.Test.Remove(obj);
+        _unitOfWork.Test.Remove(obj);
             _unitOfWork.Save();
             TempData["success"] = "Test deleted successfully";
             return RedirectToAction("Index");

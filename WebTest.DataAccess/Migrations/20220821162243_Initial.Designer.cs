@@ -12,7 +12,7 @@ using WebTestApplication.DataAccess;
 namespace WebTest.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220518144058_Initial")]
+    [Migration("20220821162243_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

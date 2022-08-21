@@ -20,6 +20,13 @@ public class TestController : Controller
         public IActionResult Index()
         {
         IEnumerable<Test> objTestList =_unitOfWork.Test.GetAll();
+        foreach(var objTest in objTestList)
+        {
+            var catid = objTest.CategoryId;
+            var cat = _unitOfWork.Category.GetFirstOrDefault(c => c.Id == catid).Name;           
+            objTest.name_category = cat;  
+        }
+       
         return View(objTestList);
         
         }

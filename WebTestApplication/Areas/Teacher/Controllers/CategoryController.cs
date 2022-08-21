@@ -21,11 +21,19 @@ public class CategoryController : Controller
         
         public IActionResult Index()
         {
-
-
-            IEnumerable<Category> objCategoryList =_unitOfWork.Category.GetAll();
-            return View(objCategoryList);
+            IEnumerable<Category> objCategoryList =_unitOfWork.Category.GetAll().ToList();
+        
+        foreach (var category in objCategoryList)
+        {
+            int count = 0;
+            count = count + _unitOfWork.Test.GetAll(c => c.Category == category).Count();            
+            category.count_test_in_cat = count;
         }
+
+
+
+        return View(objCategoryList);
+            }
 
         //Get
         public IActionResult Create()
@@ -43,16 +51,20 @@ public class CategoryController : Controller
             {
                 ModelState.AddModelError("name", "The DisplayOrder cannot exacly match the Name");
             }
-            
-            
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Category.Add(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Category created successfully";
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+
+        _unitOfWork.Category.Add(obj);
+        _unitOfWork.Save();
+        TempData["success"] = "Category created successfully";
+        return RedirectToAction("Index");
+        
+        //if (ModelState.IsValid)
+        //{
+        //    _unitOfWork.Category.Add(obj);
+        //    _unitOfWork.Save();
+        //    TempData["success"] = "Category created successfully";
+        //    return RedirectToAction("Index");
+        //}
+        //return View(obj);
         }
 
         

@@ -28,7 +28,9 @@ namespace WebTest.Models
         public ICollection<TestCart> TestCarts { get; set; }
         [NotMapped]
         public object TestId { get; set; }
+        [NotMapped]
+        public string name_category { get; set; }
 
-       
+
     }
 }

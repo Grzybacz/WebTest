@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebTestApplication.Models
 {
@@ -16,5 +17,8 @@ namespace WebTestApplication.Models
         public int DisplayOrder { get; set; }
 
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;
+        [NotMapped]
+        public int? count_test_in_cat { get; set; }
+
     }
 }

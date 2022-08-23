@@ -19,8 +19,8 @@ public class QuestionsController : Controller
     }
     public IActionResult Index(int? id)
     {
-        ViewBag.id = id;       
-       
+        ViewBag.id = id;
+        TempData["Test_id"] = id;
 
         if (id == null || id == 0)
         {
@@ -41,14 +41,14 @@ public class QuestionsController : Controller
                
             };
 
-        questions.CountQuestions = 0;
-        foreach (var question in questions.ListQuestions)
-        {
-            questions.CountQuestions += 1;
-        }
+        //questions.CountQuestions = 0;
+        //foreach (var question in questions.ListQuestions)
+        //{
+        //    questions.CountQuestions += 1;
+        //}
 
-        _unitOfWork.Questions.Add(questions);
-        _unitOfWork.Save();
+        //_unitOfWork.Questions.Add(questions);
+        //_unitOfWork.Save();
 
 
 
@@ -126,6 +126,38 @@ public class QuestionsController : Controller
         TempData["success"] = "Question deleted successfully";
         return RedirectToAction("Index", "Test");
 
+    }
+
+    public IActionResult SaveQuestions()
+    {
+
+        var test = _unitOfWork.Test.GetFirstOrDefault(c => c.Id == Convert.ToInt32(TempData["Test_id"]));
+        string testname = test.Name;
+
+        Questions questions = new()
+        {
+
+            ListQuestions = _unitOfWork.TestCart.GetAll(c => c.TestId == Convert.ToInt32(TempData["Test_id"])),
+
+            TestId = Convert.ToInt32(TempData["Test_id"]),
+            TestName = testname,
+
+        };
+
+        questions.CountQuestions = 0;
+        foreach (var question in questions.ListQuestions)
+        {
+            questions.CountQuestions += 1;
+        }
+
+        _unitOfWork.Questions.Add(questions);
+        _unitOfWork.Save();
+
+
+
+
+
+        return View(questions);
     }
 
 

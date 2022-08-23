@@ -235,6 +235,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xRdWVzdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/aleks/OneDrive/Pulpit/WebTest/WebTestApplication/WebTestApplication/Areas/Teacher/Views/Questions/SaveQuestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xRdWVzdGlvbnNcU2F2ZVF1ZXN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/aleks/OneDrive/Pulpit/WebTest/WebTestApplication/WebTestApplication/Areas/Teacher/Views/Second/GetAnswer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGVhY2hlclxWaWV3c1xTZWNvbmRcR2V0QW5zd2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
